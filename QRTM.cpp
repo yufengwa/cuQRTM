@@ -548,7 +548,7 @@ int main(int argc, char* argv[])
 
 
 
-/*
+
 
 	//=======================================================
 	//  Calculate the Observed seismograms...
@@ -698,7 +698,7 @@ int main(int argc, char* argv[])
 
 	}
 
-*/
+
 
 	//=======================================================
 	//  Construct the forward wavefields and Back-propagate
@@ -821,7 +821,7 @@ int main(int argc, char* argv[])
 					}
 				}
 				fclose(fp);
-/*
+
 
 				sprintf(filename,"./output/%dsource_seismogram_dir.dat",is+i+1);
 				fp=fopen(filename,"rb");
@@ -860,7 +860,7 @@ int main(int argc, char* argv[])
 					}
 				}
 				fclose(fp);
-*/
+
 			}
 		}
 
