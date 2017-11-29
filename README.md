@@ -6,17 +6,17 @@ cuQRTM is a CUDA-based code package that implements Q-RTM based on a set of stab
 
 ## The architecture of cuQ-RTM package 
 
--Data: Original Model data are put in input folder;
--Codes: CUQRTM.cu and QRTM.cpp are cuda and c++ code, respectively, Myfunctions.h is header file;
+- Data: Original Model data are put in input folder;
+- Codes: CUQRTM.cu and QRTM.cpp are cuda and c++ code, respectively, Myfunctions.h is header file;
 Makefile and bash file run.sh are provided for compilling our code, 
--Results: The final results will be saved in output folder.
+- Results: The final results will be saved in output folder.
 
 ## How to run this package
 
--Step 1: Run the matlab file ascii2bin.m in ./input to convert the ASCII data into binary data;
--Step 2: Confirm the folder of the environment in Makefile, replace the folder path with your own path, MPI and CUDA should be available on your computer; If all are finished, then you can run the Makefile by the command line: make
--Step 3: Run the bash file run.sh by command line: sh run.sh
--Step 4: The generated file will be placed in the folder ./ouput.
+- Step 1: Run the matlab file ascii2bin.m in ./input to convert the ASCII data into binary data;
+- Step 2: Confirm the folder of the environment in Makefile, replace the folder path with your own path, MPI and CUDA should be available on your computer; If all are finished, then you can run the Makefile by the command line: make
+- Step 3: Run the bash file run.sh by command line: sh run.sh
+- Step 4: The generated file will be placed in the folder ./ouput.
 
 ## Contact me
 
@@ -25,7 +25,7 @@ If you have any question about this coda package, please feel free to contact me
 ## Copyright
 
   Copyright (C) 
-  - 2017  China University of Petroleum, Beijing (Yufeng Wang) 
+  2017  China University of Petroleum, Beijing (Yufeng Wang) 
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
