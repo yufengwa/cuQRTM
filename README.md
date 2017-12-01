@@ -2,7 +2,7 @@
 
 ## Overview of cuQ-RTM package
 
-`cuQRTM` is a CUDA-based code package that implements Q-RTM based on a set of stable and efficient strategies, such as streamed CUFFT, checkpointing-assisted time-reversal reconstruction (CATRC) and adaptive stabilization scheme. This package is provided for accelerating conventional CPU-based Q-RTM, and mimicking how a geophysicist writes down a seismic processing modules such as modeling, imaging and inversion in the framework of the `CPU-GPU` heterogeneous computing platform. We provide two package versions: `cuQRTM-Express` for quick execution with 4 shots, which can be done within 3 min under single GPU card (GTX 760); `cuQRTM-Standard` for standard excution with 64 shots, which will take 10 min under 4 GPU cards (Tesla K10).
+`cu-QRTM` is a CUDA-based code package that implements Q-RTM based on a set of stable and efficient strategies, such as streamed CUFFT, checkpointing-assisted time-reversal reconstruction (CATRC) and adaptive stabilization scheme. This package is provided for accelerating conventional CPU-based Q-RTM, and mimicking how a geophysicist writes down a seismic processing modules such as modeling, imaging and inversion in the framework of the `CPU-GPU` heterogeneous computing platform. We provide two package versions: `cuQRTM-Express` for quick execution with 4 shots, which can be done within 3 min under single GPU card (GTX 760); `cuQRTM-Standard` for standard excution with 64 shots, which will take 10 min under 4 GPU cards (Tesla K10).
 
 ## The architecture of cuQ-RTM package 
 
@@ -23,9 +23,9 @@
 -   `QRTM.cpp`: c++ code file
 -   `Makefile`: excution script.
 
-## Prerequisite
+## Prerequisites
 
-`cuQRTM` package is developed under `Linux` system, which should be equipped with the following environments:
+`cu-QRTM` package is developed under `Linux` system, which should be equipped with the following environments:
 - CUDA environment (for example, `-I/usr/local/cuda-8.0/include` `-L/usr/local/cuda-8.0/lib64`);
 - MPI environment: (for example, `-I/home/wyf/intel/impi/5.0.1.035/intel64/include` `-L/home/wyf/intel/impi/5.0.1.035/intel64/lib/`);
 - matlab;
