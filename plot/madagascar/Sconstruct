@@ -1,0 +1,85 @@
+from rsf.proj import *
+
+###################### display definition#######################
+def result (data,other):
+    Result (data,
+            '''
+            grey title="" label1=Depth unit1="m" label2=Distance unit2="m" scalebar=n pclip=99.5 
+            labelsz=12 titlesz=12
+            color=i wherexlabel=t titlesz=10 screenratio=0.5 
+            font=-1
+            %s
+            '''%other)
+def plot (data,other):
+    Plot (data,
+          '''
+            grey title="" label1=Depth unit1="m" label2=Distance unit2="m" scalebar=n pclip=99.5 
+            labelsz=12 titlesz=12
+            color=i wherexlabel=t titlesz=10 screenratio=0.5 
+            font=-1
+            %s
+            '''%other)
+
+def graph (data, other):
+    Result (data,
+            '''
+            graph label1="Time" unit1="s"
+            label2="Amplitude" unit2= labelsz=8
+            %s
+            '''%other)
+
+## read snapshots
+
+Flow('acoimage','../../output/Final_image_cor_type0.dat','bin2rsf n1=234 n2=663 d1=10 d2=10')
+Flow('viscocimage','../../output/Final_image_cor_type1.dat','bin2rsf n1=234 n2=663 d1=10 d2=10')
+Flow('comp1image','../../output/Final_image_cor_type2.dat','bin2rsf n1=234 n2=663 d1=10 d2=10')
+Flow('comp2image','../../output/Final_image_cor_type3.dat','bin2rsf n1=234 n2=663 d1=10 d2=10')
+
+## plot snapshots
+
+plot ('acoimage','')
+plot ('viscocimage','')
+plot ('comp1image','')
+plot ('comp2image','')
+
+x1=0.15
+y1=0.25
+lx1=.20
+ly1=.22
+a1 =string.join(map(str,(x1,y1,x1,y1+ly1,x1+lx1,y1+ly1,x1+lx1,y1,x1,y1)))
+
+Flow ('line1.asc', None, 'echo %s n1=10 n2=1 data_format=ascii_float in=$TARGET'%a1)
+Plot ('line1', 'line1.asc', 'dd type=complex form=native|graph min1=0 max1=1 min2=0 max2=1  wantaxis=n plotfat=10 plotcol=6 wanttitle=n screenratio=0.5 scalebar=n')
+
+x2=0.43
+y2=0.01
+lx2=.30
+ly2=.20
+a2 =string.join(map(str,(x2,y2,x2,y2+ly2,x2+lx2,y2+ly2,x2+lx2,y2,x2,y2)))
+
+Flow ('line2.asc', None, 'echo %s n1=10 n2=1 data_format=ascii_float in=$TARGET'%a2)
+Plot ('line2', 'line2.asc', 'dd type=complex form=native|graph min1=0 max1=1 min2=0 max2=1  wantaxis=n plotfat=10 plotcol=3 wanttitle=n screenratio=0.5 scalebar=n')
+
+x3=0.43
+y3=0.68
+lx3=.15
+ly3=.20
+a3 =string.join(map(str,(x3,y3,x3,y3+ly3,x3+lx3,y3+ly3,x3+lx3,y3,x3,y3)))
+
+Flow ('line3.asc', None, 'echo %s n1=10 n2=1 data_format=ascii_float in=$TARGET'%a3)
+Plot ('line3', 'line3.asc', 'dd type=complex form=native|graph min1=0 max1=1 min2=0 max2=1  wantaxis=n plotfat=10 plotcol=2 wanttitle=n screenratio=0.5 scalebar=n')
+
+Result ('maraco','acoimage line1 line2 line3', 'Overlay')
+Result ('marvisco','viscocimage line1 line2 line3', 'Overlay')
+Result ('marcomp1','comp1image line1 line2 line3', 'Overlay')
+Result ('marcomp2','comp2image line1 line2 line3', 'Overlay')
+
+## plot record, velocity and Q model
+
+Flow('acc_vp','../../output/acc_vp.dat','bin2rsf n1=234 n2=663 d1=10 d2=10')
+Flow('acc_Qp','../../output/acc_Qp.dat','bin2rsf n1=234 n2=663 d1=10 d2=10')
+
+result ('acc_vp','bias=3000 clip=2000 scalebar=y labelsz=10 color=j')
+result ('acc_Qp','bias=100 clip=120 scalebar=y labelsz=10 color=j')
+
+End()
